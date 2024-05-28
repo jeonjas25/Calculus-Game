@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Calculus MCQ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AP Calculus MCQ Practice</h1>
+    </header>
+    <main>
+        <section id="quiz-selection">
+            <h2>Select a Quiz</h2>
+            <form id="quiz-form">
+                <label for="topic">Choose a topic:</label>
+                <select id="topic" name="topic">
+                    <option value="limits">Limits</option>
+                    <option value="derivatives">Derivatives</option>
+                    <option value="integrals">Integrals</option>
+                </select>
+                <button type="button" onclick="loadQuiz()">Start Quiz</button>
+            </form>
+        </section>
+        <section id="quiz-container" style="display: none;">
+            <h2>Quiz Questions</h2>
+            <div id="questions"></div>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 AP Calculus MCQ Practice</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
