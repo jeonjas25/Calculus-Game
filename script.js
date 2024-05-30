@@ -98,22 +98,34 @@ function submitQuiz() {
     const questions = document.querySelectorAll('.question');
     const topic = document.getElementById('topic').value;
     let score = 0;
+    let resultHTML = '<h2>Quiz Result</h2>';
 
     questions.forEach((q, index) => {
         const selectedOption = q.querySelector(`input[name="question${index}"]:checked`);
-        if (selectedOption && selectedOption.value === sampleQuestions[topic][index].answer) {
+        const correctAnswer = sampleQuestions[topic][index].answer;
+        const userAnswer = selectedOption ? selectedOption.value : '';
+        const isCorrect = userAnswer === correctAnswer;
+        if (isCorrect) {
             score++;
         }
+        resultHTML += `<div class="question-result">
+            <p><strong>Question ${index + 1}:</strong> ${q.innerText}</p>
+            <p><strong>Your Answer:</strong> ${userAnswer}</p>
+            <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
+            <p><strong>Result:</strong> ${isCorrect ? 'Correct' : 'Incorrect'}</p>
+        </div>`;
     });
 
     const resultContainer = document.getElementById('result-container');
     const result = document.getElementById('result');
-    result.innerText = `You scored ${score} out of ${questions.length}`;
+    result.innerHTML = `You scored ${score} out of ${questions.length}`;
+    resultContainer.innerHTML = resultHTML;
 
     // Hide the quiz container and show the result container
     document.getElementById('quiz-container').style.display = 'none';
     resultContainer.style.display = 'block';
 }
+
 
 function restartQuiz() {
     document.getElementById('quiz-selection').style.display = 'block';
