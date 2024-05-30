@@ -127,6 +127,7 @@ function submitQuiz() {
 }
 
 
+
 function restartQuiz() {
     document.getElementById('quiz-selection').style.display = 'block';
     document.getElementById('quiz-container').style.display = 'none';
