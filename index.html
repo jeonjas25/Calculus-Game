@@ -19,21 +19,26 @@
                     <option value="limits">Limits</option>
                     <option value="derivatives">Derivatives</option>
                     <option value="integrals">Integrals</option>
+                    <option value="trigSubstitution">Trig Substitution</option>
+                    <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
                 </select>
                 <button type="button" onclick="loadQuiz()">Start Quiz</button>
             </form>
         </section>
         <section id="quiz-container" style="display: none;">
-            <h2>Quiz Questions</h2>
+            <h2>Quiz</h2>
             <div id="questions"></div>
             <button type="button" onclick="submitQuiz()">Submit Quiz</button>
         </section>
         <section id="result-container" style="display: none;">
-            <h2>Quiz Result</h2>
+            <h2>Result</h2>
             <p id="result"></p>
             <button type="button" onclick="restartQuiz()">Try Another Quiz</button>
         </section>
     </main>
+    <footer>
+        <p>&copy; 2024 AP Calculus MCQ Practice</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
