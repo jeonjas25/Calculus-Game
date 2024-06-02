@@ -146,6 +146,67 @@ function restartQuiz() {
     document.getElementById('result-container').style.display = 'none';
 }
 
+
+function loadFRQ() {
+    const topic = document.getElementById('frq-topic').value;
+    const frqQuestionContainer = document.getElementById('frq-question');
+    const frqContainer = document.getElementById('frq-container');
+    const frqResultContainer = document.getElementById('frq-result-container');
+
+    // Clear any existing FRQ question and result
+    frqQuestionContainer.innerHTML = '';
+    document.getElementById('frq-answer').value = '';
+    frqResultContainer.style.display = 'none';
+
+    // Get the selected FRQ
+    const frq = sampleQuestions.frqs[parseInt(topic) - 1];
+
+    // Display the FRQ question
+    const frqQuestionElement = document.createElement('p');
+    frqQuestionElement.textContent = frq.question;
+    frqQuestionContainer.appendChild(frqQuestionElement);
+
+    // Show the FRQ container
+    frqContainer.style.display = 'block';
+}
+
+function submitFRQ() {
+    const topic = document.getElementById('frq-topic').value;
+    const frqResultContainer = document.getElementById('frq-result-container');
+    const userAnswer = document.getElementById('frq-answer').value.trim();
+    const frq = sampleQuestions.frqs[parseInt(topic) - 1];
+    const correctAnswer = frq.answer;
+
+    // Display the FRQ result
+    const frqResult = document.getElementById('frq-result');
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        frqResult.textContent = 'Your answer is correct!';
+    } else {
+        frqResult.textContent = 'Your answer is incorrect. The correct answer is: ' + correctAnswer;
+    }
+
+    // Show the result container
+    frqResultContainer.style.display = 'block';
+}
+
+function restartFRQ() {
+    const frqQuestionContainer = document.getElementById('frq-question');
+    const frqResultContainer = document.getElementById('frq-result-container');
+    const frqAnswer = document.getElementById('frq-answer');
+
+    // Clear the FRQ question, answer, and result
+    frqQuestionContainer.innerHTML = '';
+    frqAnswer.value = '';
+    frqResultContainer.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.loadFRQ = loadFRQ;
+    window.submitFRQ = submitFRQ;
+    window.restartFRQ = restartFRQ;
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     window.loadQuiz = loadQuiz;
     window.submitQuiz = submitQuiz;
