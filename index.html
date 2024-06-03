@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AP Calculus Practice</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <h1>AP Calculus Practice</h1>
     </header>
     <main>
+        <!-- Quiz Section -->
         <section id="quiz-selection">
             <h2>Select a Quiz</h2>
             <form id="quiz-form">
@@ -36,6 +38,7 @@
             <button type="button" onclick="restartQuiz()">Try Another Quiz</button>
         </section>
 
+        <!-- FRQ Section -->
         <section id="frq-selection">
             <h2>Select a FRQ</h2>
             <form id="frq-form">
@@ -66,6 +69,5 @@
             <button type="button" onclick="restartFRQ()">Try Another FRQ</button>
         </section>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>
