@@ -147,6 +147,8 @@ function restartQuiz() {
 }
 
 
+
+// Function to load FRQ
 function loadFRQ() {
     const topic = document.getElementById('frq-topic').value;
     const frqQuestionContainer = document.getElementById('frq-question');
@@ -170,6 +172,7 @@ function loadFRQ() {
     frqContainer.style.display = 'block';
 }
 
+// Function to submit FRQ
 function submitFRQ() {
     const topic = document.getElementById('frq-topic').value;
     const frqResultContainer = document.getElementById('frq-result-container');
@@ -189,6 +192,7 @@ function submitFRQ() {
     frqResultContainer.style.display = 'block';
 }
 
+// Function to restart FRQ
 function restartFRQ() {
     const frqQuestionContainer = document.getElementById('frq-question');
     const frqResultContainer = document.getElementById('frq-result-container');
