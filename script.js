@@ -61,33 +61,32 @@ const sampleQuestions = {
     ]
 };
 
+
 function loadQuiz() {
     const topic = document.getElementById('topic').value;
     const questionsContainer = document.getElementById('questions');
     const quizContainer = document.getElementById('quiz-container');
     const resultContainer = document.getElementById('result-container');
 
-    // Clear any existing questions
+    // Clear previous quiz
     questionsContainer.innerHTML = '';
-    resultContainer.style.display = 'none';
+    resultContainer.innerHTML = '';
 
     // Get the questions for the selected topic
-    const questions = sampleQuestions[topic] || [];
+    const questions = sampleQuestions[topic];
 
-    // Generate questions HTML
     questions.forEach((q, index) => {
         const questionElement = document.createElement('div');
         questionElement.classList.add('question');
         questionElement.innerHTML = `
-            <p>${index + 1}. ${q.question}</p>
-            ${q.options ? q.options.map(option => `
+            <p>${index + 1}. ${q.question} <span class="hint" onclick="showHint(${index})">(Hint)</span></p>
+            ${q.options.map(option => `
                 <label>
                     <input type="radio" name="question${index}" value="${option}">
                     ${option}
                 </label>
-            `).join('') : `
-                <textarea name="question${index}" placeholder="Your answer"></textarea>
-            `}
+            `).join('')}
+            <p id="hint${index}" style="display:none; color:blue;">Hint: ${q.hint}</p>
         `;
         questionsContainer.appendChild(questionElement);
     });
@@ -96,46 +95,36 @@ function loadQuiz() {
     quizContainer.style.display = 'block';
 }
 
+function showHint(index) {
+    document.getElementById(`hint${index}`).style.display = 'block';
+}
+
 function submitQuiz() {
-    const questions = document.querySelectorAll('.question');
     const topic = document.getElementById('topic').value;
+    const questions = document.querySelectorAll('.question');
     let score = 0;
     let resultHTML = '<h2>Quiz Result</h2>';
 
     questions.forEach((q, index) => {
         const selectedOption = q.querySelector(`input[name="question${index}"]:checked`);
         const correctAnswer = sampleQuestions[topic][index].answer;
-        const userAnswer = selectedOption ? selectedOption.value : q.querySelector(`textarea[name="question${index}"]`).value;
-        const isCorrect = userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+        const userAnswer = selectedOption ? selectedOption.value : '';
+        const isCorrect = userAnswer === correctAnswer;
+
         if (isCorrect) {
             score++;
+        } else {
+            resultHTML += `<div class="question-result">
+                <p><strong>Question ${index + 1}:</strong> ${sampleQuestions[topic][index].question}</p>
+                <p><strong>Your Answer:</strong> ${userAnswer}</p>
+                <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
+                <p><strong>Explanation:</strong> ${sampleQuestions[topic][index].explanation}</p>
+            </div>`;
         }
-        resultHTML += `<div class="question-result">
-            <p><strong>Question ${index + 1}:</strong> ${q.innerText}</p>
-            <p><strong>Your Answer:</strong> ${userAnswer}</p>
-            <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
-            <p><strong>Result:</strong> ${isCorrect ? 'Correct' : 'Incorrect'}</p>
-        </div>`;
     });
 
-    const resultContainer = document.getElementById('result-container');
-    const result = document.getElementById('result');
-    result.innerHTML = `You scored ${score} out of ${questions.length}`;
-    resultContainer.innerHTML = resultHTML;
-
-    // Hide the quiz container and show the result container
+    resultHTML += `<p>Your score is ${score} out of ${questions.length}</p>`;
+    document.getElementById('result-container').innerHTML = resultHTML;
+    document.getElementById('result-container').style.display = 'block';
     document.getElementById('quiz-container').style.display = 'none';
-    resultContainer.style.display = 'block';
 }
-
-function restartQuiz() {
-    document.getElementById('quiz-selection').style.display = 'block';
-    document.getElementById('quiz-container').style.display = 'none';
-    document.getElementById('result-container').style.display = 'none';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.loadQuiz = loadQuiz;
-    window.submitQuiz = submitQuiz;
-    window.restartQuiz = restartQuiz;
-});
