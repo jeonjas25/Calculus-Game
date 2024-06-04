@@ -17,6 +17,7 @@ main {
     padding: 1em;
 }
 
+/* Styling for both quiz and FRQ sections */
 #quiz-selection, #quiz-container, #result-container, #frq-selection, #frq-container, #frq-result-container {
     background-color: white;
     margin: 1em auto;
@@ -26,10 +27,12 @@ main {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for the headings in quiz and FRQ sections */
 #quiz-selection h2, #quiz-container h2, #result-container h2, #frq-selection h2, #frq-container h2, #frq-result-container h2 {
     margin-top: 0;
 }
 
+/* Styling for labels, selects, and buttons */
 label, select, button {
     display: block;
     margin: 0.5em 0;
@@ -48,6 +51,7 @@ button:hover {
     background-color: #1C86EE;
 }
 
+/* Styling for the footer */
 footer {
     text-align: center;
     padding: 1em 0;
