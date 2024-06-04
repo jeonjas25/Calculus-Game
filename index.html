@@ -3,28 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quiz</title>
+    <title>AP Calculus Practice</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="quiz-selection">
-        <label for="topic">Select a topic:</label>
-        <select id="topic">
-            <option value="limits">Limits</option>
-            <option value="derivatives">Derivatives</option>
-            <option value="integrals">Integrals</option>
-            <option value="trigSubstitution">Trigonometric Substitution</option>
-            <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
-        </select>
-        <button onclick="loadQuiz()">Start Quiz</button>
-    </div>
-    <div id="quiz-container" style="display: none;">
-        <div id="questions"></div>
-        <button onclick="submitQuiz()">Submit</button>
-    </div>
-    <div id="result-container"></div>
-    <div id="result"></div>
+    <header>
+        <h1>AP Calculus Practice</h1>
+    </header>
+    <main>
+        <!-- Quiz Section -->
+        <div id="quiz-selection">
+            <label for="topic">Select a topic:</label>
+            <select id="topic">
+                <option value="limits">Limits</option>
+                <option value="derivatives">Derivatives</option>
+                <option value="integrals">Integrals</option>
+                <option value="trigSubstitution">Trigonometric Substitution</option>
+                <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
+            </select>
+            <button onclick="loadQuiz()">Start Quiz</button>
+        </div>
+        <div id="quiz-container" style="display: none;">
+            <div id="questions"></div>
+            <button onclick="submitQuiz()">Submit</button>
+        </div>
+        <div id="result-container"></div>
+        <div id="result"></div>
 
+        <!-- FRQ Section -->
+        <section id="frq-selection">
+            <h2>Select a FRQ</h2>
+            <form id="frq-form">
+                <label for="frq-topic">Choose a FRQ:</label>
+                <select id="frq-topic" name="frq-topic">
+                    <option value="frq1">FRQ 1</option>
+                    <option value="frq2">FRQ 2</option>
+                    <option value="frq3">FRQ 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <button type="button" onclick="loadFRQ()">Start FRQ</button>
+            </form>
+        </section>
+        <section id="frq-container" style="display: none;">
+            <h2>FRQ</h2>
+            <div id="frq-question"></div>
+            <textarea id="frq-answer" rows="5" cols="50"></textarea>
+            <button type="button" onclick="submitFRQ()">Submit FRQ</button>
+        </section>
+        <section id="frq-result-container" style="display: none;">
+            <h2>Result</h2>
+            <p id="frq-result"></p>
+            <button type="button" onclick="restartFRQ()">Try Another FRQ</button>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
