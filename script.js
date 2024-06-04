@@ -420,6 +420,8 @@ function submitQuiz() {
                 <p><strong>Your Answer:</strong> ${userAnswer}</p>
                 <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
                 <p><strong>Explanation:</strong> ${sampleQuestions[topic][index].explanation}</p>
+                <p>_____________________________________________________________________________________</p>
+                <p></p>
             </div>`;
         }
     });
