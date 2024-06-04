@@ -463,6 +463,20 @@ function loadFRQ() {
     frqContainer.style.display = 'block';
 }
 
+function restartFRQ() {
+    const frqForm = document.getElementById('frq-form');
+    const frqContainer = document.getElementById('frq-container');
+    const frqResultContainer = document.getElementById('frq-result-container');
+
+    // Reset the FRQ form
+    frqForm.reset();
+
+    // Hide the FRQ result container and show the FRQ selection container
+    frqResultContainer.style.display = 'none';
+    frqContainer.style.display = 'block';
+}
+
+
 function submitFRQ() {
     const frqTopic = document.getElementById('frq-topic').value;
     const frqUserAnswer = document.getElementById('frq-answer').value.trim();
