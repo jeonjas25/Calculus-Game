@@ -361,6 +361,17 @@ const sampleQuestions = {
 ]
 };
 
+const frqQuestions = {
+    frq1: {
+        question: "What is the integral of 2x dx?",
+        answer: "x^2 + C"
+    },
+    frq2: {
+        question: "Find the derivative of sin(x).",
+        answer: "cos(x)"
+    },
+    // Add more FRQ questions as needed
+};
 
 
 function loadQuiz() {
@@ -420,7 +431,7 @@ function submitQuiz() {
                 <p><strong>Your Answer:</strong> ${userAnswer}</p>
                 <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
                 <p><strong>Explanation:</strong> ${sampleQuestions[topic][index].explanation}</p>
-                <p>_____________________________________________________________________________________</p>
+                <p>______________________________________________________________</p>
                 <p></p>
             </div>`;
         }
@@ -430,4 +441,40 @@ function submitQuiz() {
     document.getElementById('result-container').innerHTML = resultHTML;
     document.getElementById('result-container').style.display = 'block';
     document.getElementById('quiz-container').style.display = 'none';
+}
+
+function loadFRQ() {
+    const frqTopic = document.getElementById('frq-topic').value;
+    const frqQuestionContainer = document.getElementById('frq-question');
+    const frqContainer = document.getElementById('frq-container');
+    const frqResultContainer = document.getElementById('frq-result-container');
+
+    // Clear previous FRQ
+    frqQuestionContainer.innerHTML = '';
+    frqResultContainer.innerHTML = '';
+
+    // Get the FRQ for the selected topic
+    const frqQuestion = frqQuestions[frqTopic];
+
+    // Display the FRQ question
+    frqQuestionContainer.innerHTML = `<p>${frqQuestion.question}</p>`;
+
+    // Show the FRQ container
+    frqContainer.style.display = 'block';
+}
+
+function submitFRQ() {
+    const frqTopic = document.getElementById('frq-topic').value;
+    const frqUserAnswer = document.getElementById('frq-answer').value.trim();
+    const frqResultContainer = document.getElementById('frq-result-container');
+    const frqCorrectAnswer = frqQuestions[frqTopic].answer;
+
+    // Display the result
+    if (frqUserAnswer === frqCorrectAnswer) {
+        frqResultContainer.innerHTML = '<p>Correct! Well done!</p>';
+    } else {
+        frqResultContainer.innerHTML = '<p>Incorrect. Please try again!</p>';
+    }
+
+    frqResultContainer.style.display = 'block';
 }
