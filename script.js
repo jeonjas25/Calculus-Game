@@ -620,8 +620,8 @@ function submitFRQ() {
 
     for (const part in frqQuestion.parts) {
         const partQuestion = frqQuestion.parts[part];
-        let userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim().toLowerCase();
-        let correctAnswer = partQuestion.answer.trim().toLowerCase();
+        let userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim().toLowerCase().replace(/\s+/g, '');
+        let correctAnswer = partQuestion.answer.trim().toLowerCase().replace(/\s+/g, '');
         const isCorrect = userAnswer === correctAnswer;
 
         if (isCorrect) {
@@ -643,6 +643,7 @@ function submitFRQ() {
     frqResultContainer.style.display = 'block';
     document.getElementById('frq-container').style.display = 'none';
 }
+
 
 function restartFRQ() {
     const frqForm = document.getElementById('frq-form');
