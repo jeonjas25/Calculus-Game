@@ -568,6 +568,7 @@ const frqQuestions = {
 };
 
 
+
 function loadQuiz() {
     const topic = document.getElementById('topic').value;
     const questionsContainer = document.getElementById('questions');
