@@ -363,16 +363,151 @@ const sampleQuestions = {
 
 const frqQuestions = {
     frq1: {
-        question: "What is the integral of 2x dx?",
-        answer: "x^2 + C"
+        question: "Problem 1: ",
+        parts: {
+            a: {
+                question: "What is the integral of 2x dx?",
+                answer: "x^2 + C",
+                hint: "Think about the basic integration rule for polynomials.",
+                explanation: "The integral of 2x is x^2, as the power of x increases by one and we divide by the new power."
+            },
+            b: {
+                question: "Find the derivative of x^3.",
+                answer: "3x^2",
+                hint: "Use the power rule for differentiation.",
+                explanation: "The derivative of x^3 is 3x^2, as you bring down the exponent and reduce the power by one."
+            },
+            c: {
+                question: "Evaluate the integral of e^x dx.",
+                answer: "e^x + C",
+                hint: "The integral of e^x is a special case.",
+                explanation: "The integral of e^x is e^x because the derivative of e^x is also e^x."
+            },
+            d: {
+                question: "Find the derivative of ln(x).",
+                answer: "1/x",
+                hint: "Recall the derivative rule for natural logarithms.",
+                explanation: "The derivative of ln(x) is 1/x as per the natural logarithm differentiation rule."
+            }
+        }
     },
     frq2: {
-        question: "Find the derivative of sin(x).",
-        answer: "cos(x)"
+        question: "Problem 2: ",
+        parts: {
+            a: {
+                question: "What is the integral of cos(x) dx?",
+                answer: "sin(x) + C",
+                hint: "Think about the function whose derivative is cos(x).",
+                explanation: "The integral of cos(x) is sin(x) because the derivative of sin(x) is cos(x)."
+            },
+            b: {
+                question: "Find the derivative of tan(x).",
+                answer: "sec^2(x)",
+                hint: "Use the trigonometric differentiation rules.",
+                explanation: "The derivative of tan(x) is sec^2(x) based on the standard differentiation rules."
+            },
+            c: {
+                question: "Evaluate the integral of 1/x dx.",
+                answer: "ln|x| + C",
+                hint: "This is a standard integral result.",
+                explanation: "The integral of 1/x is ln|x| because the derivative of ln|x| is 1/x."
+            },
+            d: {
+                question: "Find the derivative of arctan(x).",
+                answer: "1/(1 + x^2)",
+                hint: "Recall the derivative rule for inverse trigonometric functions.",
+                explanation: "The derivative of arctan(x) is 1/(1 + x^2) as per the inverse trigonometric differentiation rules."
+            }
+        }
     },
-    // Add more FRQ questions as needed
+    frq3: {
+        question: "Problem 3: ",
+        parts: {
+            a: {
+                question: "What is the integral of 3x^2 dx?",
+                answer: "x^3 + C",
+                hint: "Apply the power rule for integration.",
+                explanation: "The integral of 3x^2 is x^3, as you increase the power by one and divide by the new power."
+            },
+            b: {
+                question: "Find the derivative of e^(2x).",
+                answer: "2e^(2x)",
+                hint: "Use the chain rule for differentiation.",
+                explanation: "The derivative of e^(2x) is 2e^(2x) because of the chain rule."
+            },
+            c: {
+                question: "Evaluate the integral of sin(x) dx.",
+                answer: "-cos(x) + C",
+                hint: "Think about the function whose derivative is sin(x).",
+                explanation: "The integral of sin(x) is -cos(x) because the derivative of -cos(x) is sin(x)."
+            },
+            d: {
+                question: "Find the derivative of ln|x|.",
+                answer: "1/x",
+                hint: "This is similar to the derivative of ln(x).",
+                explanation: "The derivative of ln|x| is 1/x, similar to ln(x)."
+            }
+        }
+    },
+    frq4: {
+        question: "Problem 4: ",
+        parts: {
+            a: {
+                question: "What is the integral of sec^2(x) dx?",
+                answer: "tan(x) + C",
+                hint: "Think about the function whose derivative is sec^2(x).",
+                explanation: "The integral of sec^2(x) is tan(x) because the derivative of tan(x) is sec^2(x)."
+            },
+            b: {
+                question: "Find the derivative of cos(x).",
+                answer: "-sin(x)",
+                hint: "Recall the basic differentiation rule for cosine.",
+                explanation: "The derivative of cos(x) is -sin(x) as per the standard differentiation rules."
+            },
+            c: {
+                question: "Evaluate the integral of 1/(1 + x^2) dx.",
+                answer: "arctan(x) + C",
+                hint: "This is a standard integral result for inverse trigonometric functions.",
+                explanation: "The integral of 1/(1 + x^2) is arctan(x) because the derivative of arctan(x) is 1/(1 + x^2)."
+            },
+            d: {
+                question: "Find the derivative of sinh(x).",
+                answer: "cosh(x)",
+                hint: "Recall the hyperbolic function differentiation rules.",
+                explanation: "The derivative of sinh(x) is cosh(x) based on the standard differentiation rules for hyperbolic functions."
+            }
+        }
+    },
+    frq5: {
+        question: "Problem 5: ",
+        parts: {
+            a: {
+                question: "What is the integral of cosh(x) dx?",
+                answer: "sinh(x) + C",
+                hint: "Think about the function whose derivative is cosh(x).",
+                explanation: "The integral of cosh(x) is sinh(x) because the derivative of sinh(x) is cosh(x)."
+            },
+            b: {
+                question: "Find the derivative of sinh(x).",
+                answer: "cosh(x)",
+                hint: "Use the hyperbolic function differentiation rules.",
+                explanation: "The derivative of sinh(x) is cosh(x) as per the standard rules."
+            },
+            c: {
+                question: "Evaluate the integral of 2x dx.",
+                answer: "x^2 + C",
+                hint: "Apply the basic integration rule for polynomials.",
+                explanation: "The integral of 2x is x^2, as you increase the power by one and divide by the new power."
+            },
+            d: {
+                question: "Find the derivative of x^2.",
+                answer: "2x",
+                hint: "Use the power rule for differentiation.",
+                explanation: "The derivative of x^2 is 2x as per the basic differentiation rules."
+            }
+        }
+    }
 };
-
 
 function loadQuiz() {
     const topic = document.getElementById('topic').value;
@@ -459,8 +594,53 @@ function loadFRQ() {
     // Display the FRQ question
     frqQuestionContainer.innerHTML = `<p>${frqQuestion.question}</p>`;
 
+    for (const part in frqQuestion.parts) {
+        const partQuestion = frqQuestion.parts[part];
+        frqQuestionContainer.innerHTML += `
+            <p>${part}. ${partQuestion.question} <span class="hint" onclick="showFrqHint('${frqTopic}', '${part}')">(Hint)</span></p>
+            <p id="frq-hint-${frqTopic}-${part}" style="display:none; color:blue;">Hint: ${partQuestion.hint}</p>
+            <input type="text" id="frq-answer-${frqTopic}-${part}" class="frq-answer">
+        `;
+    }
+
     // Show the FRQ container
     frqContainer.style.display = 'block';
+}
+
+function showFrqHint(frqTopic, part) {
+    document.getElementById(`frq-hint-${frqTopic}-${part}`).style.display = 'block';
+}
+
+function submitFRQ() {
+    const frqTopic = document.getElementById('frq-topic').value;
+    const frqQuestion = frqQuestions[frqTopic];
+    const frqResultContainer = document.getElementById('frq-result-container');
+    let score = 0;
+    let resultHTML = '<h2>FRQ Result</h2>';
+
+    for (const part in frqQuestion.parts) {
+        const partQuestion = frqQuestion.parts[part];
+        const userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim();
+        const isCorrect = userAnswer === partQuestion.answer;
+
+        if (isCorrect) {
+            score++;
+        } else {
+            resultHTML += `<div class="frq-result">
+                <p><strong>Part ${part}:</strong> ${partQuestion.question}</p>
+                <p><strong>Your Answer:</strong> ${userAnswer}</p>
+                <p><strong>Correct Answer:</strong> ${partQuestion.answer}</p>
+                <p><strong>Explanation:</strong> ${partQuestion.explanation}</p>
+                <p>______________________________________________________________</p>
+                <p></p>
+            </div>`;
+        }
+    }
+
+    resultHTML += `<p>Your score is ${score} out of ${Object.keys(frqQuestion.parts).length}</p>`;
+    frqResultContainer.innerHTML = resultHTML;
+    frqResultContainer.style.display = 'block';
+    document.getElementById('frq-container').style.display = 'none';
 }
 
 function restartFRQ() {
@@ -474,21 +654,4 @@ function restartFRQ() {
     // Hide the FRQ result container and show the FRQ selection container
     frqResultContainer.style.display = 'none';
     frqContainer.style.display = 'block';
-}
-
-
-function submitFRQ() {
-    const frqTopic = document.getElementById('frq-topic').value;
-    const frqUserAnswer = document.getElementById('frq-answer').value.trim();
-    const frqResultContainer = document.getElementById('frq-result-container');
-    const frqCorrectAnswer = frqQuestions[frqTopic].answer;
-
-    // Display the result
-    if (frqUserAnswer === frqCorrectAnswer) {
-        frqResultContainer.innerHTML = '<p>Correct! Well done!</p>';
-    } else {
-        frqResultContainer.innerHTML = '<p>Incorrect. Please try again!</p>';
-    }
-
-    frqResultContainer.style.display = 'block';
 }
