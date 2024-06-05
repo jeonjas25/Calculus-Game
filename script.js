@@ -620,29 +620,64 @@ function showFrqHint(frqTopic, part) {
 }
 
 function submitFRQ() {
-    const frqTopic = document.getElementById('frq-topic').value;
+    const frqTopicElement = document.getElementById('frq-topic');
+    if (!frqTopicElement) {
+        console.error("FRQ topic select element not found.");
+        return;
+    }
+
+    const frqTopic = frqTopicElement.value;
+    if (!frqTopic || !frqQuestions.hasOwnProperty(frqTopic)) {
+        console.error("Invalid or missing FRQ topic.");
+        return;
+    }
+
     const frqQuestion = frqQuestions[frqTopic];
     const frqResultContainer = document.getElementById('frq-result-container');
+    if (!frqResultContainer) {
+        console.error("FRQ result container not found.");
+        return;
+    }
+
+    const partsCount = Object.keys(frqQuestion.parts).length;
     let score = 0;
     let resultHTML = '<h2>FRQ Result</h2>';
 
     for (const part in frqQuestion.parts) {
+        if (!frqQuestion.parts.hasOwnProperty(part)) continue;
+
         const partQuestion = frqQuestion.parts[part];
-        let userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim().toLowerCase();
-        let correctAnswer = partQuestion.answer.trim().toLowerCase();
+        const inputId = `frq-answer-${frqTopic}-${part}`;
+        const inputElement = document.getElementById(inputId);
+
+        if (!inputElement) {
+            console.error(`Input element for part ${part} not found.`);
+            continue;
+        }
+
+        const userAnswer = inputElement.value.trim().toLowerCase();
+        const correctAnswer = partQuestion.answer.trim().toLowerCase();
         const isCorrect = userAnswer === correctAnswer;
 
         if (isCorrect) {
             score++;
-        } else {
-            resultHTML += `<div class="frq-result">
-                <p><strong>Part ${part}:</strong> ${partQuestion.question}</p>
-                <p><strong>Your Answer:</strong> ${userAnswer}</p>
-                <p><strong>Correct Answer:</strong> ${partQuestion.answer}</p>
-                <p><strong>Explanation:</strong> ${partQuestion.explanation}</p>
-            </div>`;
         }
+
+        resultHTML += `<div class="frq-result">
+            <p><strong>Part ${part}:</strong> ${partQuestion.question}</p>
+            <p><strong>Your Answer:</strong> ${userAnswer}</p>
+            <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
+            <p><strong>Explanation:</strong> ${partQuestion.explanation}</p>
+        </div>`;
     }
+
+    resultHTML += `<p>Your score is ${score} out of ${partsCount}</p>`;
+    frqResultContainer.innerHTML = resultHTML;
+    frqResultContainer.style.display = 'block';
+    const frqContainer = document.getElementById('frq-container');
+    if (frqContainer) frqContainer.style.display = 'none';
+}
+
 
     resultHTML += `<p>Your score is ${score} out of ${Object.keys(frqQuestion.parts).length}</p>`;
     frqResultContainer.innerHTML = resultHTML;
