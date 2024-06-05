@@ -506,6 +506,64 @@ const frqQuestions = {
                 explanation: "The derivative of x^2 is 2x as per the basic differentiation rules."
             }
         }
+    },
+    frq6: {
+        question: "Problem 6: Solve the differential equation dy/dx = xy with the intial condition y(0) = 3.",
+        parts: {
+            a: {
+                question: "Solve the differential equation.",
+                answer: "y = Ce^x^2/2",
+                hint: "Use seperation of variables.",
+                explanation: "By seperating the variables and integrating each side, then solving for y, you get y = Ce^x^2/2."
+            },
+            b: {
+                question: "Find the particular solution using the initial condition.",
+                answer: "y = 3e^x^2/2",
+                hint: "Solve for C using the differentiated equation.",
+                explanation: "Plugging in x = 0 and y = 3, you get C = 3."
+            },
+            c: {
+                question: "Determine the value of the solution at x = 1.",
+                answer: "3e^1/2",
+                hint: "Solve for y when x = 1.",
+                explanation: "Plugging in x = 1 into the particular solution, the answer is 3e^1/2."
+            },
+            d: {
+                question: "Find the equation of the tangent line to the curve at x = 1 (point-slope form).",
+                answer: "y - 3e^1/2 = 3e^1/2(x - 1)",
+                hint: "Solve for dy/dx at x = 1.",
+                explanation: "By plugginig in x = 1 and y = 3e^1/2 into the equation for dy/dx, the slope is 3e^1/2. Then plug these values into point-slope form."
+            }
+        }
+    }
+    frq7: {
+        question: "Problem 7: Consider the function f(x) = x^3-3x^2+4.",
+        parts: {
+            a: {
+                question: "Find the first derivative f'(x).",
+                answer: "f'(x) = 3x^2 - 6x",
+                hint: "Use the power rule for derivatives.",
+                explanation: "Using the power rule the derivative is 3x^2 - 6x."
+            },
+            b: {
+                question: "Determine the critical points of f(x).",
+                answer: "x = 0, x = 2",
+                hint: "The critical points of a function are where f'(x) = 0.",
+                explanation: "Solving for when 3x^2 - 6x = 0, the critical points are x = 0 and x = 2."
+            },
+            c: {
+                question: "Find the local maxima of f(x).",
+                answer: "(0, 4)",
+                hint: "Use the first or second derivative test.",
+                explanation: "Using the first derivative test, you can see f'(x) changes from positive to negative at x = 0. Using the second derivative test, you can see f''(x) < 0 at x = 0."
+            },
+            d: {
+                question: "Find the coordinates of the inflection points of f(x).",
+                answer: "(1, 2)",
+                hint: "The inflection points of f(x) are when f''(x) changes signs.",
+                explanation: "By solving for when f''(x) is equal to 0, you get x = 1. Then, testing this point shows that f''(x) changes signs on the point, making it a point of inflection."
+            }
+        }
     }
 };
 
