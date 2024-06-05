@@ -533,17 +533,18 @@ function loadQuiz() {
                     ${option}
                 </label>
             `).join('')}
-            <p id="hint${index}" style="display:none; color:blue;">Hint: ${q.hint}</p>
+            <p id="hint${index}" class="hint-text">Hint: ${q.hint}</p>
         `;
         questionsContainer.appendChild(questionElement);
     });
 
-    // Show the quiz container
+    // Show the quiz container with animation
     quizContainer.style.display = 'block';
+    setTimeout(() => quizContainer.classList.add('visible'), 10);
 }
 
 function showHint(index) {
-    document.getElementById(`hint${index}`).style.display = 'block';
+    document.getElementById(`hint${index}`).classList.toggle('visible');
 }
 
 function submitQuiz() {
@@ -551,9 +552,15 @@ function submitQuiz() {
     const questions = document.querySelectorAll('.question');
     let score = 0;
     let resultHTML = '<h2>Quiz Result</h2>';
+    let unanswered = false;
 
     questions.forEach((q, index) => {
         const selectedOption = q.querySelector(`input[name="question${index}"]:checked`);
+        if (!selectedOption) {
+            unanswered = true;
+            alert('Please answer all questions before submitting.');
+            return false;
+        }
         const correctAnswer = sampleQuestions[topic][index].answer;
         const userAnswer = selectedOption ? selectedOption.value : '';
         const isCorrect = userAnswer === correctAnswer;
@@ -566,11 +573,11 @@ function submitQuiz() {
                 <p><strong>Your Answer:</strong> ${userAnswer}</p>
                 <p><strong>Correct Answer:</strong> ${correctAnswer}</p>
                 <p><strong>Explanation:</strong> ${sampleQuestions[topic][index].explanation}</p>
-                <p>______________________________________________________________</p>
-                <p></p>
             </div>`;
         }
     });
+
+    if (unanswered) return;
 
     resultHTML += `<p>Your score is ${score} out of ${questions.length}</p>`;
     document.getElementById('result-container').innerHTML = resultHTML;
@@ -598,17 +605,18 @@ function loadFRQ() {
         const partQuestion = frqQuestion.parts[part];
         frqQuestionContainer.innerHTML += `
             <p>${part}. ${partQuestion.question} <span class="hint" onclick="showFrqHint('${frqTopic}', '${part}')">(Hint)</span></p>
-            <p id="frq-hint-${frqTopic}-${part}" style="display:none; color:blue;">Hint: ${partQuestion.hint}</p>
+            <p id="frq-hint-${frqTopic}-${part}" class="hint-text">Hint: ${partQuestion.hint}</p>
             <input type="text" id="frq-answer-${frqTopic}-${part}" class="frq-answer">
         `;
     }
 
-    // Show the FRQ container
+    // Show the FRQ container with animation
     frqContainer.style.display = 'block';
+    setTimeout(() => frqContainer.classList.add('visible'), 10);
 }
 
 function showFrqHint(frqTopic, part) {
-    document.getElementById(`frq-hint-${frqTopic}-${part}`).style.display = 'block';
+    document.getElementById(`frq-hint-${frqTopic}-${part}`).classList.toggle('visible');
 }
 
 function submitFRQ() {
@@ -632,8 +640,6 @@ function submitFRQ() {
                 <p><strong>Your Answer:</strong> ${userAnswer}</p>
                 <p><strong>Correct Answer:</strong> ${partQuestion.answer}</p>
                 <p><strong>Explanation:</strong> ${partQuestion.explanation}</p>
-                <p>______________________________________________________________</p>
-                <p></p>
             </div>`;
         }
     }
@@ -643,7 +649,6 @@ function submitFRQ() {
     frqResultContainer.style.display = 'block';
     document.getElementById('frq-container').style.display = 'none';
 }
-
 
 function restartFRQ() {
     const frqForm = document.getElementById('frq-form');
@@ -655,5 +660,7 @@ function restartFRQ() {
 
     // Hide the FRQ result container and show the FRQ selection container
     frqResultContainer.style.display = 'none';
-    frqContainer.style.display = 'block';
+    frqContainer.classList.remove('visible');
+    setTimeout(() => frqContainer.style.display = 'block', 10);
 }
+
