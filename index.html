@@ -15,43 +15,33 @@
     </header>
     <main>
         <section id="quiz-selection">
-            <label for="topic">Select a topic:</label>
-            <select id="topic">
+            <label for="mcq-topic">Select a topic for MCQ:</label>
+            <select id="mcq-topic">
                 <option value="limits">Limits</option>
                 <option value="derivatives">Derivatives</option>
                 <option value="integrals">Integrals</option>
                 <option value="trigSubstitution">Trigonometric Substitution</option>
                 <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
             </select>
-            <button class="primary-button" onclick="loadQuiz()">Start Quiz</button>
-        </section>
-        <section id="quiz-container" style="display: none;">
-            <div id="questions"></div>
-            <button class="primary-button" onclick="submitQuiz()">Submit</button>
-        </section>
-        <section id="result-container"></section>
+            <button class="primary-button" onclick="loadMCQ()">Start MCQ</button>
 
-        <section id="frq-selection">
-            <h2>Select a FRQ</h2>
-            <form id="frq-form">
-                <label for="frq-topic">Choose a FRQ:</label>
-                <select id="frq-topic" name="frq-topic">
-                    <option value="frq1">FRQ 1</option>
-                    <option value="frq2">FRQ 2</option>
-                </select>
-                <button class="primary-button" type="button" onclick="loadFRQ()">Start FRQ</button>
-            </form>
+            <label for="frq-topic">Select a topic for FRQ:</label>
+            <select id="frq-topic">
+                <option value="frq1">FRQ 1</option>
+                <option value="frq2">FRQ 2</option>
+                <!-- Add more FRQ topics here -->
+            </select>
+            <button class="primary-button" onclick="loadFRQ()">Start FRQ</button>
+        </section>
+        <section id="mcq-container" style="display: none;">
+            <div id="mcq-questions"></div>
+            <button class="primary-button" onclick="submitMCQ()">Submit MCQ</button>
         </section>
         <section id="frq-container" style="display: none;">
-            <h2>FRQ</h2>
-            <div id="frq-question"></div>
-            <button class="primary-button" type="button" onclick="submitFRQ()">Submit FRQ</button>
+            <div id="frq-questions"></div>
+            <button class="primary-button" onclick="submitFRQ()">Submit FRQ</button>
         </section>
-        <section id="frq-result-container" style="display: none;">
-            <h2>Result</h2>
-            <p id="frq-result"></p>
-            <button class="primary-button" type="button" onclick="restartFRQ()">Try Another FRQ</button>
-        </section>
+        <section id="result-container"></section>
     </main>
     <script src="script.js"></script>
 </body>
