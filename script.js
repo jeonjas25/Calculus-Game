@@ -686,6 +686,8 @@ function submitFRQ() {
 
     for (const part in frqQuestion.parts) {
         const partQuestion = frqQuestion.parts[part];
+        const userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim();
+        const isCorrect = userAnswer === partQuestion.answer;
         let userAnswer = document.getElementById(`frq-answer-${frqTopic}-${part}`).value.trim().toLowerCase();
         let correctAnswer = partQuestion.answer.trim().toLowerCase();
         const isCorrect = userAnswer === correctAnswer;
@@ -698,10 +700,11 @@ function submitFRQ() {
                 <p><strong>Your Answer:</strong> ${userAnswer}</p>
                 <p><strong>Correct Answer:</strong> ${partQuestion.answer}</p>
                 <p><strong>Explanation:</strong> ${partQuestion.explanation}</p>
+                <p>______________________________________________________________</p>
+                <p></p>
             </div>`;
         }
     }
-
     resultHTML += `<p>Your score is ${score} out of ${Object.keys(frqQuestion.parts).length}</p>`;
     frqResultContainer.innerHTML = resultHTML;
     frqResultContainer.style.display = 'block';
