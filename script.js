@@ -535,7 +535,7 @@ const frqQuestions = {
                 explanation: "By plugginig in x = 1 and y = 3e^1/2 into the equation for dy/dx, the slope is 3e^1/2. Then plug these values into point-slope form."
             }
         }
-    }
+    },
     frq7: {
         question: "Problem 7: Consider the function f(x) = x^3-3x^2+4.",
         parts: {
