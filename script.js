@@ -679,12 +679,6 @@ function submitFRQ() {
 }
 
 
-    resultHTML += `<p>Your score is ${score} out of ${Object.keys(frqQuestion.parts).length}</p>`;
-    frqResultContainer.innerHTML = resultHTML;
-    frqResultContainer.style.display = 'block';
-    document.getElementById('frq-container').style.display = 'none';
-}
-
 
 function restartFRQ() {
     const frqForm = document.getElementById('frq-form');
