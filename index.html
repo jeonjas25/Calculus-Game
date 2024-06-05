@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AP Calculus Practice</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <nav>
-            <h1>AP Calculus Practice</h1>
-        </nav>
+        <h1>AP Calculus Practice</h1>
     </header>
     <main>
         <!-- Quiz Section -->
-        <section id="quiz-selection">
+        <div id="quiz-selection">
             <label for="topic">Select a topic:</label>
             <select id="topic">
                 <option value="limits">Limits</option>
@@ -24,14 +21,14 @@
                 <option value="trigSubstitution">Trigonometric Substitution</option>
                 <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
             </select>
-            <button class="primary-button" onclick="loadQuiz()">Start Quiz</button>
-        </section>
-        <section id="quiz-container" style="display: none;">
+            <button onclick="loadQuiz()">Start Quiz</button>
+        </div>
+        <div id="quiz-container" style="display: none;">
             <div id="questions"></div>
-            <button class="primary-button" onclick="submitQuiz()">Submit</button>
-        </section>
-        <section id="result-container"></section>
-        <section id="result"></section>
+            <button onclick="submitQuiz()">Submit</button>
+        </div>
+        <div id="result-container"></div>
+        <div id="result"></div>
 
         <!-- FRQ Section -->
         <section id="frq-selection">
@@ -47,16 +44,18 @@
                     <option value="frq6">FRQ 6</option>
                     <option value="frq7">FRQ 7</option>
                 </select>
-                <button class="primary-button" type = "button" onclick="loadFRQ()">Start FRQ</button>
+                <button type="button" onclick="loadFRQ()">Start FRQ</button>
             </form>
         </section>
         <section id="frq-container" style="display: none;">
             <h2>FRQ</h2>
             <div id="frq-question"></div>
-            <button class="primary-button" type = "button" onclick="submitFRQ()">Submit FRQ</button>
+            <button type="button" onclick="submitFRQ()">Submit FRQ</button>
         </section>
         <section id="frq-result-container" style="display: none;">
+            <h2>Result</h2>
             <p id="frq-result"></p>
+            <button type="button" onclick="restartFRQ()">Try Another FRQ</button>
         </section>
     </main>
     <script src="script.js"></script>
