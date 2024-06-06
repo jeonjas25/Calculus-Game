@@ -1,0 +1,52 @@
+import requests
+import re
+import random
+from bs4 import BeautifulSoup
+
+# Define a dictionary of topics and their corresponding URLs on Khan Academy
+topic_urls = {
+    "Continuity": "https://www.khanacademy.org/math/ap-calculus-ab/ab-limits-new/ab-2-9/e/discontinuities",
+    "Integrals": "https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new",
+    "Derivatives": "https://www.khanacademy.org/math/ap-calculus-1/ap-calc-derivatives",
+    "Vectors": "https://www.khanacademy.org/math/multivariable-calculus/vectors-calc",
+    "Integral Applications": "https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-applications-new",
+    "Multiple Integrals": "https://www.khanacademy.org/math/multivariable-calculus/multiple-integrals",
+    "Rates of Change": "https://www.khanacademy.org/math/ap-calculus-ab/ab-derivative-rules",
+    "Limits": "https://www.khanacademy.org/math/ap-calculus-ab/ab-limits-new",
+    "Differential Equations": "https://www.khanacademy.org/math/differential-equations"
+}
+
+# Define a function to fetch questions from a given URL
+def fetch_questions(url, user_choice):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an exception for non-2xx status codes
+        soup = BeautifulSoup(response.text, 'html.parser')
+        questions = soup.find_all('div', class_='exercise-content')
+        return [question.find('div', class_='question-stem').get_text().strip() for question in questions]
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching questions from {url}: {e}")
+        return []
+
+# Prompt the user to select topics
+
+
+# Fetch questions from the selected topics
+all_questions = []
+for topic in selected_topics:
+    topic = topic.strip()
+    if topic in topic_urls:
+        url = topic_urls[topic]
+        print(f"Fetching questions for {topic} from {url}")
+        questions = fetch_questions(url)
+        all_questions.extend(questions)
+    else:
+        print(f"Invalid topic: {topic}")
+
+# Present the fetched questions to the user
+if all_questions:
+    print("\nFetched Questions:")
+    for question in all_questions:
+        print(f"- {question}")
+else:
+    print("No questions fetched.")

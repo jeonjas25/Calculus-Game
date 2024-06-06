@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrs. Crain's Calculus Practice</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Mrs. Crain's AP Calculus Helper</h1>
+    </header>
+    <main class="container mt-4">
+        <!-- Quiz Section -->
+        <div id="quiz-selection" class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Select a Quiz</h2>
+                <div class="form-group">
+                    <label for="topic">Select a topic:</label>
+                    <select id="topic" class="form-control">
+                        <option value="limits">Limits</option>
+                        <option value="derivatives">Derivatives</option>
+                        <option value="integrals">Integrals</option>
+                        <option value="trigSubstitution">Trigonometric Substitution</option>
+                        <option value="trigIntegralsDerivatives">Trig Integrals and Derivatives</option>
+                        <option value="diffEQ">Differential Equations</option>
+                        <option value="SequenceAndSeries">Sequences and Series</option>
+                        <option value="rates_of_change">Rate of Change</option>
+                        <option value="IntegralAPP">Integral Application</option>
+                        <option value = "vectorCalc">Vectors in Calculas</option>
+                        <option value = "multipleInt">Multiple Integrals</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="loadQuiz()">Start Quiz</button>
+            </div>
+        </div>
+        <div id="quiz-container" class="card mb-4" style="display: none;">
+            <div class="card-body">
+                <div id="questions"></div>
+                <button class="btn btn-primary mt-3" onclick="submitQuiz()">Submit</button>
+            </div>
+        </div>
+        <div id="result-container" class="card mb-4" style="display: none;">
+            <div class="card-body" id="result"></div>
+        </div>
+
+        <!-- FRQ Section -->
+        <section id="frq-selection" class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Select a FRQ</h2>
+                <form id="frq-form">
+                    <div class="form-group">
+                        <label for="frq-topic">Choose a FRQ:</label>
+                        <select id="frq-topic" name="frq-topic" class="form-control">
+                            <option value="frq1">FRQ 1</option>
+                            <option value="frq2">FRQ 2</option>
+                            <option value="frq3">FRQ 3</option>
+                            <option value="frq4">FRQ 4</option>
+                            <option value="frq5">FRQ 5</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="loadFRQ()">Start FRQ</button>
+                </form>
+            </div>
+        </section>
+        <section id="frq-container" class="card mb-4" style="display: none;">
+            <div class="card-body">
+                <h2 class="card-title">FRQ</h2>
+                <div id="frq-question"></div>
+                <button type="button" class="btn btn-primary mt-3" onclick="submitFRQ()">Submit FRQ</button>
+            </div>
+        </section>
+        <section id="frq-result-container" class="card mb-4" style="display: none;">
+            <div class="card-body">
+                <h2 class="card-title">Result</h2>
+                <p id="frq-result"></p>
+                <button type="button" class="btn btn-primary" onclick="restartFRQ()">Try Another FRQ</button>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
